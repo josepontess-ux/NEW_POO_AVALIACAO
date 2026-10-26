@@ -38,3 +38,8 @@ def classificar_pedido(subtotal):
         return "Pedido médio"
     else:
         return "Pedido grande"
+
+def exibir_resumo(nome, itens_validos, itens_rejeitados,
+                  linhas_validas, total_unidades, subtotal,
+                  desconto, total, classificacao):
+    """Exibe o relatório completo do pedido."""
