@@ -74,3 +74,15 @@ def exibir_resumo(nome, itens_validos, itens_rejeitados,
     print(f"Total a pagar: R$ {total:.2f}")
     print(f"Classificação: {classificacao}")
     print("======================================")
+
+def processar_pedido(nome, cupom, cardapio, pedido):
+    """Processa os itens e calcula os valores do pedido."""
+
+    cupom = cupom.lower()
+
+    itens_validos = []
+    itens_rejeitados = []
+
+    subtotal_pedido = 0
+    linhas_validas = 0
+    total_unidades = 0
