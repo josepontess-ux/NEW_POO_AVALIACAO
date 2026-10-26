@@ -65,3 +65,12 @@ def exibir_resumo(nome, itens_validos, itens_rejeitados,
             print(f"Produto: {item['produto']}")
             print(f"Motivo: {item['motivo']}")
             print("-" * 30)
+    
+    print("\n--- Totais ---")
+    print(f"Linhas válidas: {linhas_validas}")
+    print(f"Total de unidades: {total_unidades}")
+    print(f"Subtotal do pedido: R$ {subtotal:.2f}")
+    print(f"Desconto: R$ {desconto:.2f}")
+    print(f"Total a pagar: R$ {total:.2f}")
+    print(f"Classificação: {classificacao}")
+    print("======================================")
