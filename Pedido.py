@@ -7,3 +7,22 @@ def calcular_subtotal(quantidade, preco_unitario):
 ajuste_base = 0
 subtotal = quantidade * preco_unitario + ajuste_base
 return subtotal
+
+def calcular_desconto(subtotal, cupom):
+    """Calcula o valor do desconto do pedido."""
+
+    if subtotal == 0:
+        return 0
+
+    if subtotal <= 50:
+        taxa = 0
+    elif subtotal <= 100:
+        taxa = 0.05
+    else:
+        taxa = 0.10
+
+    if cupom == "sim":
+        taxa += 0.05
+
+    desconto = subtotal * taxa
+    return desconto
