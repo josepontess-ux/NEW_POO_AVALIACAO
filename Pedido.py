@@ -119,3 +119,20 @@ for item in pedido:
       itens_rejeitados.append({
       "produto": produto,
       "motivo": " e ".join(motivos)})
+
+desconto = calcular_desconto(subtotal_pedido, cupom)
+
+    total = subtotal_pedido - desconto
+
+    classificacao = classificar_pedido(subtotal_pedido)
+
+    exibir_resumo(
+        nome,
+        itens_validos,
+        itens_rejeitados,
+        linhas_validas,
+        total_unidades,
+        subtotal_pedido,
+        desconto,
+        total,
+        classificacao)
