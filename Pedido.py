@@ -86,3 +86,39 @@ def processar_pedido(nome, cupom, cardapio, pedido):
     subtotal_pedido = 0
     linhas_validas = 0
     total_unidades = 0
+
+for item in pedido:
+        produto = item["produto"].lower()
+        quantidade = item["quantidade"]
+
+        motivos = []
+
+        if produto not in cardapio:
+            motivos.append("Produto inexistente no cardápio")
+
+        if quantidade <= 0:
+            motivos.append("Quantidade inválida")
+
+        if validar_item(produto, quantidade, cardapio):
+            preco_unitario = cardapio[produto]
+
+            subtotal_item = calcular_subtotal(
+                quantidade, preco_unitario
+            )
+
+            itens_validos.append({
+                "produto": produto,
+                "quantidade": quantidade,
+                "preco_unitario": preco_unitario,
+                "subtotal": subtotal_item
+            })
+
+            subtotal_pedido += subtotal_item
+            linhas_validas += 1
+            total_unidades += quantidade
+
+        else:
+            itens_rejeitados.append({
+                "produto": produto,
+                "motivo": " e ".join(motivos)
+            })
