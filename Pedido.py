@@ -115,7 +115,7 @@ for item in pedido:
      linhas_validas += 1
      total_unidades += quantidade
 
-     else:
-       itens_rejeitados.append({
-       "produto": produto,
-       "motivo": " e ".join(motivos)})
+    else:
+      itens_rejeitados.append({
+      "produto": produto,
+      "motivo": " e ".join(motivos)})
