@@ -1,0 +1,104 @@
+TESTES DO SISTEMA DE PEDIDOS DA LANCHONETE
+===========================================
+
+
+
+CENÁRIO 1 — PEDIDO INICIAL
+Dados: cliente Felipe; cupom SIM; hambúrguer 2; batata 1; suco 3; pizza 1; água 0.
+Resultado esperado: 3 linhas válidas; 6 unidades; subtotal R$ 86,00; desconto R$ 8,60; total R$ 77,40; Pedido médio. Pizza rejeitada por produto inexistente e água por quantidade inválida.
+Resultado obtido:
+Linhas válidas: 3
+Total de unidades: 6
+Subtotal do pedido: R$ 86.00
+Desconto: R$ 8.60
+Total a pagar: R$ 77.40
+Classificação: Pedido médio
+Rejeições observadas: pizza — Produto inexistente no cardápio; agua — Quantidade inválida.
+
+CENÁRIO 2 — MESMO PEDIDO SEM CUPOM
+Dados: mesmos itens do cenário 1; cupom NAO.
+Resultado esperado: subtotal R$ 86,00; desconto R$ 4,30; total R$ 81,70; classificação Pedido médio.
+Resultado obtido:
+Linhas válidas: 3
+Total de unidades: 6
+Subtotal do pedido: R$ 86.00
+Desconto: R$ 4.30
+Total a pagar: R$ 81.70
+Classificação: Pedido médio
+
+CENÁRIO 3 — LIMITES DAS FAIXAS (CUPOM NAO)
+
+Teste com subtotal R$ 50.00:
+Resultado esperado e obtido:
+Linhas válidas: 1
+Total de unidades: 1
+Subtotal do pedido: R$ 50.00
+Desconto: R$ 0.00
+Total a pagar: R$ 50.00
+Classificação: Pedido pequeno
+
+Teste com subtotal R$ 50.01:
+Resultado esperado e obtido:
+Linhas válidas: 1
+Total de unidades: 1
+Subtotal do pedido: R$ 50.01
+Desconto: R$ 2.50
+Total a pagar: R$ 47.51
+Classificação: Pedido médio
+
+Teste com subtotal R$ 100.00:
+Resultado esperado e obtido:
+Linhas válidas: 1
+Total de unidades: 1
+Subtotal do pedido: R$ 100.00
+Desconto: R$ 5.00
+Total a pagar: R$ 95.00
+Classificação: Pedido médio
+
+Teste com subtotal R$ 100.01:
+Resultado esperado e obtido:
+Linhas válidas: 1
+Total de unidades: 1
+Subtotal do pedido: R$ 100.01
+Desconto: R$ 10.00
+Total a pagar: R$ 90.01
+Classificação: Pedido grande
+
+CENÁRIO 4 — NENHUM ITEM VÁLIDO
+Teste A — lista vazia.
+Resultado esperado: 0 linhas válidas; 0 unidades; subtotal, desconto e total R$ 0,00; classificação Pedido sem itens válidos.
+Resultado obtido:
+Linhas válidas: 0
+Total de unidades: 0
+Subtotal do pedido: R$ 0.00
+Desconto: R$ 0.00
+Total a pagar: R$ 0.00
+Classificação: Pedido sem itens válidos
+Teste B — pizza quantidade 1 e água quantidade 0.
+Resultado esperado: ambos rejeitados; 0 linhas válidas; 0 unidades; subtotal, desconto e total R$ 0,00; classificação Pedido sem itens válidos.
+Resultado obtido:
+Linhas válidas: 0
+Total de unidades: 0
+Subtotal do pedido: R$ 0.00
+Desconto: R$ 0.00
+Total a pagar: R$ 0.00
+Classificação: Pedido sem itens válidos
+Rejeições observadas:
+Produto: pizza
+Motivo: Produto inexistente no cardápio
+Produto: agua
+Motivo: Quantidade inválida
+
+CENÁRIO 5 — PRODUTO REPETIDO E QUANTIDADE NEGATIVA
+Dados: hambúrguer quantidade 1; hambúrguer quantidade 2; batata quantidade -1; cupom NAO.
+Resultado esperado: duas linhas válidas de hambúrguer; batata rejeitada; 2 linhas válidas; 3 unidades; subtotal R$ 75,00; desconto R$ 3,75; total R$ 71,25; Pedido médio.
+Resultado obtido:
+Linhas válidas: 2
+Total de unidades: 3
+Subtotal do pedido: R$ 75.00
+Desconto: R$ 3.75
+Total a pagar: R$ 71.25
+Classificação: Pedido médio
+Rejeição observada:
+Produto: batata
+Motivo: Quantidade inválida
