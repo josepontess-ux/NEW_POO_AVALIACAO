@@ -87,45 +87,45 @@ def processar_pedido(nome, cupom, cardapio, pedido):
     linhas_validas = 0
     total_unidades = 0
 
-for item in pedido:
-    produto = item["produto"].lower()
-    quantidade = item["quantidade"]
+    for item in pedido:
+        produto = item["produto"].lower()
+        quantidade = item["quantidade"]
+    
+        motivos = []
 
-    motivos = []
-
-    if produto not in cardapio:
-       motivos.append("Produto inexistente no cardápio")
-
-    if quantidade <= 0:
-       motivos.append("Quantidade inválida")
-
-    if validar_item(produto, quantidade, cardapio):
-       preco_unitario = cardapio[produto]
-
-    subtotal_item = calcular_subtotal(
-                quantidade, preco_unitario)
-
-    itens_validos.append({
-    "produto": produto,
-    "quantidade": quantidade,
-    "preco_unitario": preco_unitario,
-    "subtotal": subtotal_item})
-
-     subtotal_pedido += subtotal_item
-     linhas_validas += 1
-     total_unidades += quantidade
-
-    else:
-      itens_rejeitados.append({
-      "produto": produto,
-      "motivo": " e ".join(motivos)})
-
-desconto = calcular_desconto(subtotal_pedido, cupom)
-
+        if produto not in cardapio:
+           motivos.append("Produto inexistente no cardápio")
+    
+        if quantidade <= 0:
+           motivos.append("Quantidade inválida")
+    
+        if validar_item(produto, quantidade, cardapio):
+           preco_unitario = cardapio[produto]
+    
+        subtotal_item = calcular_subtotal(
+                    quantidade, preco_unitario)
+    
+        itens_validos.append({
+        "produto": produto,
+        "quantidade": quantidade,
+        "preco_unitario": preco_unitario,
+        "subtotal": subtotal_item})
+    
+         subtotal_pedido += subtotal_item
+         linhas_validas += 1
+         total_unidades += quantidade
+    
+        else:
+          itens_rejeitados.append({
+          "produto": produto,
+          "motivo": " e ".join(motivos)})
+    
+    desconto = calcular_desconto(subtotal_pedido, cupom)
+    
     total = subtotal_pedido - desconto
-
+    
     classificacao = classificar_pedido(subtotal_pedido)
-
+    
     exibir_resumo(
         nome,
         itens_validos,
@@ -136,31 +136,31 @@ desconto = calcular_desconto(subtotal_pedido, cupom)
         desconto,
         total,
         classificacao)
-
+    
 # ==========================
 # DADOS DO PEDIDO
 # ==========================
-
+    
 cardapio = {
     "hamburguer": 25.0,
     "sanduiche": 18.0,
     "batata": 12.0,
     "suco": 8.0,
     "agua": 5.0}
-
-pedido = [
+    
+ pedido = [
     {"produto": "HAMBURGUER", "quantidade": 2},
     {"produto": "batata", "quantidade": 1},
     {"produto": "Suco", "quantidade": 3},
     {"produto": "pizza", "quantidade": 1},
     {"produto": "agua", "quantidade": 0}]
-
+    
 nome = "Felipe"
 cupom = "SIM"
-
-
+    
+    
 # ==========================
 # EXECUÇÃO DO PROGRAMA
 # ==========================
-
+    
 processar_pedido(nome, cupom, cardapio, pedido)
