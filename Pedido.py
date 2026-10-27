@@ -146,8 +146,7 @@ cardapio = {
     "sanduiche": 18.0,
     "batata": 12.0,
     "suco": 8.0,
-    "agua": 5.0
-}
+    "agua": 5.0}
 
 pedido = [
     {"produto": "HAMBURGUER", "quantidade": 2},
