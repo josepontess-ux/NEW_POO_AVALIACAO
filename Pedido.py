@@ -88,37 +88,34 @@ def processar_pedido(nome, cupom, cardapio, pedido):
     total_unidades = 0
 
 for item in pedido:
-        produto = item["produto"].lower()
-        quantidade = item["quantidade"]
+    produto = item["produto"].lower()
+    quantidade = item["quantidade"]
 
-        motivos = []
+    motivos = []
 
-        if produto not in cardapio:
-            motivos.append("Produto inexistente no cardápio")
+    if produto not in cardapio:
+       motivos.append("Produto inexistente no cardápio")
 
-        if quantidade <= 0:
-            motivos.append("Quantidade inválida")
+    if quantidade <= 0:
+       motivos.append("Quantidade inválida")
 
-        if validar_item(produto, quantidade, cardapio):
-            preco_unitario = cardapio[produto]
+    if validar_item(produto, quantidade, cardapio):
+       preco_unitario = cardapio[produto]
 
-            subtotal_item = calcular_subtotal(
-                quantidade, preco_unitario
-            )
+    subtotal_item = calcular_subtotal(
+                quantidade, preco_unitario)
 
-            itens_validos.append({
-                "produto": produto,
-                "quantidade": quantidade,
-                "preco_unitario": preco_unitario,
-                "subtotal": subtotal_item
-            })
+    itens_validos.append({
+    "produto": produto,
+    "quantidade": quantidade,
+    "preco_unitario": preco_unitario,
+    "subtotal": subtotal_item})
 
-            subtotal_pedido += subtotal_item
-            linhas_validas += 1
-            total_unidades += quantidade
+     subtotal_pedido += subtotal_item
+     linhas_validas += 1
+     total_unidades += quantidade
 
-        else:
-            itens_rejeitados.append({
-                "produto": produto,
-                "motivo": " e ".join(motivos)
-            })
+     else:
+       itens_rejeitados.append({
+       "produto": produto,
+       "motivo": " e ".join(motivos)})
